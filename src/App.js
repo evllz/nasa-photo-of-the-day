@@ -11,13 +11,12 @@ import moment from 'moment';
 function App() {
   const [data,setData] = useState([]);
   const [selectedDate,setSelectedDate] = useState(null)
-  console.log(selectedDate)
-
-
+  
   useEffect(()=>{
     if(selectedDate === null){
+      const defaultDate = moment().format('YYYY-MM-DD');
       axios
-      .get(`https://api.nasa.gov/planetary/apod?api_key=HUlc5Ju0yWI2VrtJ261IQeCkpluNUJkhctHxERfB&date=2020-06-19`)
+      .get(`https://api.nasa.gov/planetary/apod?api_key=HUlc5Ju0yWI2VrtJ261IQeCkpluNUJkhctHxERfB&date=${defaultDate}`)
       .then( response => {setData(response.data)})
     }
     else{
@@ -27,14 +26,11 @@ function App() {
       .then( response => {setData(response.data)})
     }
   },[selectedDate])
-  console.log('Stored data',data)
-
-
 
   return (
     
     <div className="App">
-    <h1 className='main-title'>Welcome to the AOPD!</h1>
+    <h1 className='App-header'>Welcome to the AOPD!</h1>
       <div>
         <span>Select Date: </span>
         <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)}/>
@@ -42,7 +38,7 @@ function App() {
 
       {data.media_type === 'image' ? <ImageDisplay url={data.url}/>:<VideoDisplay url={data.url}/>}
        
-      <Info title={data.title} explanation={data.explanation} copyright={data.copyright}/>
+      <Info date={data.date} title={data.title} explanation={data.explanation} copyright={data.copyright}/>
 
     </div>
   );

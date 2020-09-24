@@ -4,9 +4,9 @@ export default function Info(props) {
     return (
         <div>
             <div className='title'>{props.title}</div>
-            <div className='copyright'>{props.copyright}</div>
-            <div className='date'>{props.date}</div>
-            <div className='description'>{props.explanation}</div>
+            <div className='date'>Date: {props.date}</div>
+            <div className='copyright'>Author: {props.copyright}</div>
+            <div className='description'>Description: {props.explanation}</div>
         </div>
     )
 }
