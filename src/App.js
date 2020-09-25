@@ -8,10 +8,10 @@ import VideoDisplay from "./Components/VideoDisplay"
 import Info from "./Components/Info";
 import moment from 'moment';
 
+
 function App() {
   const [data,setData] = useState([]);
   const [selectedDate,setSelectedDate] = useState(null)
-  
   useEffect(()=>{
     if(selectedDate === null){
       const defaultDate = moment().format('YYYY-MM-DD');
@@ -30,17 +30,26 @@ function App() {
   return (
     
     <div className="App">
-    <h1 className='App-header'>Welcome to the AOPD!</h1>
+      <h1 className='App-header'>Welcome to the AOPD!</h1>
       <div>
         <span>Select Date: </span>
-        <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)}/>
+        <div className='calendar' >
+          <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)}/>
+        </div>
       </div>
-
-      {data.media_type === 'image' ? <ImageDisplay url={data.url}/>:<VideoDisplay url={data.url}/>}
-       
+      <div>
+        
+      </div>
+      <div>
+        {data.media_type === 'image' ? <ImageDisplay url={data.url}/>:<VideoDisplay url={data.url}/>}
+      </div>
+      <div>
+        
+      </div>     
       <Info date={data.date} title={data.title} explanation={data.explanation} copyright={data.copyright}/>
-
+      <h1 className='App-header'></h1>
     </div>
+    
   );
 }
 

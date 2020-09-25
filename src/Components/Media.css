@@ -1,0 +1,23 @@
+.left{
+    width: 20%;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding-left: 20%;
+    margin-bottom: 20px;
+}
+.center-video{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.media-container{
+    padding-left: 20%;
+    width: 80%;
+    margin-bottom: 20px;
+}
